@@ -1,9 +1,9 @@
 [k8s-master-primary]
-193.176.241.92
+master-0
 
 [k8s-master-replicas]
-193.176.240.111
-193.176.240.207 
+master-1
+master-2
 
 
 [k8s-masters:children]
@@ -11,8 +11,8 @@ k8s-master-primary
 k8s-master-replicas
 
 [k8s-workers]
-37.152.182.194
-37.152.183.152
+worker-0
+worker-1
 
 [k8s-nodes:children]
 k8s-masters
