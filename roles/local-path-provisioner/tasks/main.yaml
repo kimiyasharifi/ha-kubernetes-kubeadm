@@ -1,0 +1,10 @@
+- name: Clone repo local-path-provisioner
+  git:
+    repo: https://github.com/rancher/local-path-provisioner.git
+    dest: /home/centos
+    update: yes
+
+- name: helm install local-path-storage
+  shell: " {{ item }} chdir=/home/centos/local-path-provisioner"
+  with_items:
+    - helm install ./deploy/chart/ --name local-path-storage --namespace local-path-storage

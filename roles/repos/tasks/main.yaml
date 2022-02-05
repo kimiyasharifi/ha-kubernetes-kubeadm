@@ -1,0 +1,28 @@
+- name: Install yum-utils
+  become: yes
+  yum:
+    name: "{{item}}"
+  with_items:
+    - yum-utils
+
+- name: "Enable extras"
+  shell:
+    yum-config-manager --enable "CentOS-7 - Extras"
+
+- name: Add docker-ce-stable repo
+  yum_repository:
+    name: docker-ce
+    description: docker-ce stable repo
+    baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
+    gpgcheck: no
+    sslverify: no
+    enabled: false
+
+- name: Add kubernetes repo
+  yum_repository:
+    name: kubernetes
+    description: Kubernetes repo
+    baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+    gpgcheck: no
+    sslverify: no
+    enabled: false

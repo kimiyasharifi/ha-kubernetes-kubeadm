@@ -1,0 +1,8 @@
+- name: copy ingress-nginx manifests
+  template:
+    src: ingress-nginx.yaml
+    dest: /tmp/ingress-nginx.yaml
+    force: yes
+
+- name: Create nginx-ingress-controller  Deployments
+  shell: kubectl apply -f /tmp/ingress-nginx.yaml

@@ -1,0 +1,8 @@
+- name: Copy kubernetes-dashboard.yaml manifests
+  template:
+    src: recommended.yaml
+    dest: /tmp/kubernetes-dashboard.yaml
+    force: yes
+
+- name: Create kubernetes-dashboard Deployment
+  shell: kubectl apply -f /tmp/kubernetes-dashboard.yaml

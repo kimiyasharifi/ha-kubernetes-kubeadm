@@ -1,0 +1,5 @@
+- name: Create namespace wordpress
+  command: kubectl create ns wordpress
+
+- name: Helm install wordpress
+  shell: helm -n wordpress install  weblog bitnami/wordpress  --set global.storageClass=local-path  --set service.type=ClusterIP  --set ingress.ingressClassName=nginx   --set image.debug=true

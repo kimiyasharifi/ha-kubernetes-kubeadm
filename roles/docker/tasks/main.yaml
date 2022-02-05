@@ -1,0 +1,14 @@
+- name: Install docker dependencies
+  become: yes
+  yum:
+    name: "{{item}}"
+  with_items:
+    - device-mapper-persistent-data
+    - lvm2
+
+- name: Install docker on hosts sequentially
+  include_tasks: "install_docker.yaml"
+  with_items: "{{ groups['k8s-nodes'] }}"
+  when: "hostvars[host_item].inventory_hostname == inventory_hostname"
+  loop_control:
+      loop_var: host_item

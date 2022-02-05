@@ -1,0 +1,5 @@
+- name: Create namespace galeraCluster
+  command: kubectl create ns galera
+
+- name: Helm install galera
+  shell: helm install galera bitnami/mariadb-galera -n galera --set metrics.enabled=true --set metrics.serviceMonitor.enabled=true
