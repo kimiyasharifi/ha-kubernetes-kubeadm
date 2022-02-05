@@ -8,5 +8,10 @@
 - import_playbook: kubeadm-join-workers.yaml
 - import_playbook: helm-install.yaml
 - import_playbook: local-storage-provisioner.yaml
+- import_playbook: local-path-provisioner.yaml
 - import_playbook: kubernetes-dashboard.yaml
 - import_playbook: nginx-install.yaml
+- import_playbook: wordpress.yaml
+- import_playbook: galeraCluster.yaml
+- import_playbook: kube-prometheus-stack.yaml
+
